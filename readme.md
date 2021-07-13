@@ -1,7 +1,10 @@
 ### Installation
 - If it's not already on your Windows, install python3.6 and pip (pip should come with it) \* Note: Python 3.7.x is not yet supported.
   
-
+in reacr-app:
+  - run  `npm install`
+  - run `npm run build`
+  
   For Windows operating system:
   - create a virtualenv with python 3.6 and activate it(Windows):
   - run `virtualenv --system-site-packages -p python3 ./venv`
