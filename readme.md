@@ -1,11 +1,13 @@
 ### Installation
-- If it's not already on your Windows, install python3.6 and pip (pip should come with it) \* Note: Python 3.7.x is not yet supported
-  For Windows:
-  - create a virtualenv with python 3.6 and activate it(MAC):
+- If it's not already on your Windows, install python3.6 and pip (pip should come with it) \* Note: Python 3.7.x is not yet supported.
+  
+
+  For Windows operating system:
+  - create a virtualenv with python 3.6 and activate it(Windows):
   - run `virtualenv --system-site-packages -p python3 ./venv`
   - run `.\venv\Scripts\activate` in the same location as the above command
 
-for Mac
+for Mac Operating system
 - create a virtualenv with python 3.6 and activate it(MAC):
   - run `virtualenv -p python3 venv`
   - run `source ./venv/bin/activate` in the same location as the above command
