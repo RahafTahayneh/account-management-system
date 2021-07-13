@@ -5,12 +5,12 @@ in reacr-app:
   - run  `npm install`
   - run `npm run build`
   
-  For Windows operating system:
+  For Windows operating system: and in root folder
   - create a virtualenv with python 3.6 and activate it(Windows):
   - run `virtualenv --system-site-packages -p python3 ./venv`
   - run `.\venv\Scripts\activate` in the same location as the above command
 
-for Mac Operating system
+for Mac Operating system and in root folder
 - create a virtualenv with python 3.6 and activate it(MAC):
   - run `virtualenv -p python3 venv`
   - run `source ./venv/bin/activate` in the same location as the above command
