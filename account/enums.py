@@ -1,14 +1,12 @@
 class AccountStatus:
     PENDING = 'pending'
-    OPENED = 'opened'
+    APPROVED = 'approved'
+    FUNDED = 'funded'
     CLOSED = 'closed'
-    SUSPENDED = 'suspended'
-    DELETED = 'deleted'
 
     CHOICES = (
         (PENDING, PENDING),
-        (OPENED, OPENED),
+        (APPROVED, APPROVED),
+        (FUNDED, FUNDED),
         (CLOSED, CLOSED),
-        (SUSPENDED, SUSPENDED),
-        (DELETED, DELETED),
     )

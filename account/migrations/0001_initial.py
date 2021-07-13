@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('balance', models.FloatField()),
-                ('status', models.CharField(choices=[('pending', 'pending'), ('opened', 'opened'), ('closed', 'closed'), ('suspended', 'suspended'), ('deleted', 'deleted')], default='pending', max_length=100)),
+                ('status', models.CharField(choices=[('pending', 'pending'), ('approved', 'approved'), ('closed', 'closed'), ('funded', 'funded')], default='pending', max_length=100)),
             ],
         ),
     ]

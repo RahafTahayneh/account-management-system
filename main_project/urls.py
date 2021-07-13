@@ -19,10 +19,12 @@ from django.conf.urls import url, include
 
 from .views import PageView
 from account import views as account_views
+from account.views import account
 
 
 api_url_patterns = [
     path('accounts/', account_views.AccountList.as_view()),
+    path('account/<int:pk>/', account),
 ]
 
 urlpatterns = [

@@ -5,7 +5,7 @@ ACCOUNTS = '''[
     },
     {
         "balance": 40000.00,
-        "status": "opened"
+        "status": "approved"
     },
     {
         "balance": 30000.00,
@@ -17,6 +17,6 @@ ACCOUNTS = '''[
     },
     {
         "balance": 10000.00,
-        "status": "suspended"
+        "status": "funded"
     }
 ]'''
