@@ -20,7 +20,7 @@ The following should happen in a terminal with `venv` activated (often this mean
 
 - run `python manage.py populate_db` to populate your db with seed data.
 
-- run `python manage.py create_superuser` to create an account for the admin. You can view the admin dashboard here: `127.0.0.1:8000/admin`
+- run `python manage.py createsuperuser` to create an account for the admin. You can view the admin dashboard here: `127.0.0.1:8000/admin`
 
 - run `python manage.py runserver`.
   This should start up the server and show output about which IP/Port it's running on (usually 127.0.0.1:8000)
