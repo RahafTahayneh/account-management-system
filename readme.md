@@ -8,6 +8,11 @@
   <p align="center">A react-mobx responsive application, where a staff member can view all accounts in a table, filter by account status, see statistics and aggregate values of total balance and total # of accounts in each
 status at the top of the table and change the status for any account, but only to a status that is available given the current
 status of the account.</p>
+ <a href="https://github.com/RahafTahayneh/account-management-system">
+    <p align="center"> <a href="https://im.ge/i/2IZhY" alt="Screen-Shot-2021-05-29-at-2-21-32-AM" height="200" width="400" object-fit="contain" border="0"></a> 
+  <a href="https://im.ge/i/2IWXM" alt="Screen-Shot-2021-05-29-at-2-21-32-AM" height="200" width="400" object-fit="contain" border="0"></a>
+  </p>
+  </a>
   <p align="center">
     <a href="https://github.com/RahafTahayneh/account-management-system/issues">Report Bug</a>
     · 
