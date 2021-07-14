@@ -7,7 +7,6 @@ import {useGraphData, useGraphRender} from "./hooks";
 import TotalAccountsBalance from "./TotalAccountsBalance";
 import {CollapsableSection} from "../../../../components/collapse";
 
-
 const Overview = observer(() => {
     return (
         <CollapsableSection title={'Overview'} expand={true}>

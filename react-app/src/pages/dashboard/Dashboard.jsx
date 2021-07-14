@@ -9,7 +9,12 @@ const useStyles = makeStyles((theme) => ({
         height: '100%',
         width: '100%',
         padding: '2% 10%',
-        overflow: 'auto'
+        overflowY: 'auto',
+        overflowX: 'hidden',
+        '&::-webkit-scrollbar': {
+            width: '0px',
+            background: 'transparent',
+        },
     }
 }));
 
@@ -18,7 +23,7 @@ const Dashboard = observer(() => {
     const [filteredList, setFilteredList] = React.useState([])
     React.useEffect(() => {
         if (!AccountsStore.loading) {
-            setFilteredList(AccountsStore.filteredAccounts)
+            setFilteredList(AccountsStore.accounts)
         }
     }, [AccountsStore.loading])
 

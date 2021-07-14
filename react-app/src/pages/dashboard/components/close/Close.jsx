@@ -2,10 +2,10 @@ import React from 'react';
 import { Grid, makeStyles, Button } from '@material-ui/core';
 import SVG from 'react-inlinesvg';
 import Classnames from 'classnames';
-import { GButton } from '../../../../uikit/button'
-import warning from '../close/assets/warning.svg';
-import {AccountsStore} from "../../../../store/account";
 import {observer} from "mobx-react";
+import warning from '../close/assets/warning.svg';
+import { GButton } from '../../../../uikit/button'
+import {AccountsStore} from "../../../../store/account";
 import { Popup } from '../../../../components/popup'
 
 const useStyles = makeStyles((theme) => ({
@@ -118,7 +118,7 @@ const Close = observer(({ onClose, open, account }) => {
                             fullWidth
                             onClick={onDelete}
                         >
-                            Delete
+                           CLose
                         </GButton>
                     </Grid>
                 </Grid>

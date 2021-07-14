@@ -22,37 +22,53 @@ class AccountsStore {
         makeObservable(this)
     }
 
+    @computed get approvedAccounts() {
+        return _.filter(this.accounts, field => field.status === 'approved')
+    }
+
+    @computed get pendingAccounts() {
+        return _.filter(this.accounts, field => field.status === 'pending')
+    }
+
+    @computed get closedAccounts() {
+        return _.filter(this.accounts, field => field.status === 'closed')
+    }
+
+    @computed get fundedAccounts() {
+        return _.filter(this.accounts, field => field.status === 'funded')
+    }
+
+    filteredAccounts() {
+        return _.filter(this.accounts, (account) => account.status === 'pending' || account.status === 'approved' || account.status === 'funded' || account.status === 'closed')
+    }
+
     @action
     async fetch() {
         this.loading = true;
-        try {
-            const { data, count } = await AccountApi.getAccounts(this.pageSize, this.page * this.pageSize);
-            this.accounts = data;
-            this.count = count
-        } finally {
-            this.accounts = this.filteredAccounts
-            this.loading = false;
-        }
+        this.accounts = JSON.parse(localStorage.getItem('accounts')) || await AccountApi.getAccounts(this.pageSize, this.page * this.pageSize);
+        this.accounts = this.filteredAccounts();
+        this.count = this.accounts.length;
+        this.loading = false;
+
     }
 
-    @action async init() {
+    @action
+    async init() {
         this.page = AccountsStore.DEFAULT_PAGE;
         this.pageSize = AccountsStore.DEFAULT_PAGE_SIZE;
 
         await this.fetch();
     }
 
-    @computed get filteredAccounts() {
-        return _.filter(this.accounts, (account) => account.status === 'pending' || account.status === 'approved' || account.status === 'funded' || account.status === 'closed')
-    }
-
-    @action async setPage(page) {
+    @action
+    async setPage(page) {
         this.page = page;
 
         await this.fetch();
     }
 
-    @action async setPageSize(pageSize) {
+    @action
+    async setPageSize(pageSize) {
         this.pageSize = pageSize;
         this.page = 0;
 
@@ -60,12 +76,14 @@ class AccountsStore {
     }
 
     @action
-    async update(accountId, data) {
+    update(accountId, data) {
         this.loading = true;
-        const account = await AccountApi.updateAccount(accountId, data);
+        const account = _.find(this.accounts, (account) => accountId === account.id)
+        account.status = data.status;
         this.accounts = _.map(this.accounts, (a) => (a.id === accountId
             ? account
             : a));
+        localStorage.setItem('accounts', JSON.stringify(this.accounts));
         this.loading = false;
     }
 

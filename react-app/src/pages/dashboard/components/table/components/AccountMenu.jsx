@@ -4,9 +4,9 @@ import {
     IconButton, makeStyles, Menu, MenuItem,
 } from '@material-ui/core';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import {observer} from "mobx-react";
 import { useOptions } from './hooks';
 import Close from "../../close/Close";
-import {observer} from "mobx-react";
 import {AccountsStore} from "../../../../../store/account";
 
 const useStyles = makeStyles(() => ({
@@ -49,14 +49,17 @@ const AccountMenu = observer(({ account }) => {
         setAnchorEl(null);
     };
 
-    const onClick = React.useCallback(async (option) => {
+    const onClick = React.useCallback( (option) => {
         switch (option) {
             case 'approved':
-                await AccountsStore.update(account.id, {status: 'approved'})
+                 AccountsStore.update(account.id, {status: 'approved'})
+                break;
             case 'closed':
                 setClose(true)
+                break
             case 'funded':
-                await AccountsStore.update(account.id, {status: 'funded'})
+                 AccountsStore.update(account.id, {status: 'funded'})
+                break;
             default: return;
         }
         handleClose();

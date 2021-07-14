@@ -83,7 +83,7 @@ const Footer = observer(() => {
             <Grid item className={classes.pagination}>
                 <Pagination
                     count={_.ceil(AccountsStore.count / AccountsStore.pageSize)}
-                    color="secondary"
+
                     classes={{
                         root: classes.tablePagination,
                         ul: classes.tablePaginationCaption,

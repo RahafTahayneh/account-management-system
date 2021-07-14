@@ -2,11 +2,11 @@ from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.parsers import JSONParser
 from django.views.decorators.cache import never_cache
-from django.views.decorators.csrf import ensure_csrf_cookie
 from django.http import HttpResponse, JsonResponse
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, authentication_classes
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
+
 
 from .models import Account
 from .serializers import AccountSerializer
@@ -23,7 +23,6 @@ class AccountList(generics.ListCreateAPIView):
 
 
 @api_view(['GET', 'PUT'])
-@csrf_exempt
 def account(request, pk):
     try:
         account =Account.objects.get(pk=pk)

@@ -1,8 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
-import {CssBaseline, Divider, Drawer, Hidden, List} from '@material-ui/core';
+import {    AppBar,
+    CssBaseline,
+    Divider,
+    Drawer, Grid,
+    Hidden,
+    IconButton,
+    List,
+    Toolbar} from '@material-ui/core';
 import {makeStyles, useTheme} from '@material-ui/core/styles';
+import MenuIcon from '@material-ui/icons/Menu';
 import {useDashboardTabs} from "./hooks";
 import Tab from "./components/Tabs";
 
@@ -18,6 +26,19 @@ const useStyles = makeStyles((theme) => ({
             flexShrink: 0,
         },
     },
+    regular:{
+        '@media (min-width: 650px)': {
+            display: 'none'
+        },
+    },
+    menuButton: {
+        marginRight: theme.spacing(2),
+        fontSize: '2rem',
+        color: theme.palette.secondary.main,
+        [theme.breakpoints.up('sm')]: {
+            display: 'none',
+        },
+    },
     // necessary for content to be below app bar
     toolbar: theme.mixins.toolbar,
     drawerPaper: {
@@ -30,7 +51,12 @@ const useStyles = makeStyles((theme) => ({
     content: {
         flexGrow: 1,
         padding: theme.spacing(3),
-    }
+    },
+    icon: {
+        fontSize: '2rem',
+        cursor: 'pointer',
+        color: theme.palette.secondary.main
+    },
 }));
 
 const Sidebar = (props) => {
@@ -61,6 +87,23 @@ const Sidebar = (props) => {
     return (
         <div className={classes.root}>
             <CssBaseline/>
+            <AppBar position="fixed">
+                <Toolbar classes={{regular: classes.regular}}>
+                    <Grid container alignItems={'center'} direction={'row'} justify={'space-between'} wrap={'nowrap'}>
+                        <Grid item>
+                            <IconButton
+                                color="inherit"
+                                aria-label="open drawer"
+                                edge="start"
+                                onClick={handleDrawerToggle}
+                                className={classes.menuButton}
+                            >
+                                <MenuIcon className={classes.icon}/>
+                            </IconButton>
+                        </Grid>
+                    </Grid>
+                </Toolbar>
+            </AppBar>
             <nav className={classes.drawer} aria-label="mailbox folders">
                 <Hidden smUp implementation="css">
                     <Drawer

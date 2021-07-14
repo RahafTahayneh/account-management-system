@@ -27,6 +27,14 @@ const useStyles = makeStyles((theme) => ({
         borderCollapse: 'separate',
         borderSpacing: theme.spacing(0, 1),
         position: 'relative',
+        '@media (max-width: 700px)': {
+            display: 'block !important',
+            overflowX: 'auto',
+            '&::-webkit-scrollbar': {
+                width: '0px',
+                background: 'transparent',
+            },
+        },
         '& tr': {
             width: '100%',
         },
@@ -55,48 +63,45 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const AccountsTable = observer(({accounts, isEmpty}) => {
-    const classes = useStyles();
+        const classes = useStyles();
 
-    return (
-        <Paper className={classes.root}>
-            {
-                AccountsStore.loading ?
-                    <CircularProgress size={20}/> :
-                    <>
-                        <table className={classes.table}>
-                            <thead>
-                            <tr>
-                                {
-                                    _.map(accountsTableHeader, (field) => (
-                                        <TableHeader key={field.key} label={field.label}/>
-                                    ))
-                                }
-                            </tr>
-                            </thead>
-                            <tr className={classes.divider}/>
+        return (
+            <Paper className={classes.root}>
+                <table className={classes.table}>
+                    <thead>
+                    <tr>
+                        {
+                            _.map(accountsTableHeader, (field) => (
+                                <TableHeader key={field.key} label={field.label}/>
+                            ))
+                        }
+                    </tr>
+                    </thead>
+                    <tr className={classes.divider}/>
 
-                            <tbody>
-                            {
-                                isEmpty ?
-                                    <tr><Empty/></tr>
+                    <tbody>
+                    {
+                        isEmpty ?
+                            <tr><Empty/></tr>
 
-                                    :
-                                    _.map(accounts, (account, index) => (
-                                        <AccountRow key={account.id} account={account} index={index}/>
-                                    ))
-                            }
-                            </tbody>
-                        </table>
-                        <tr className={classes.empty}/>
-                        <tr className={classes.empty}/>
-                        <Grid item>
-                           <Footer />
-                        </Grid>
-                    </>
-            }
-        </Paper>
-    );
-}
+                            :
+                            AccountsStore.loading ?
+                                <CircularProgress size={20}/>
+                                :
+                                _.map(accounts, (account, index) => (
+                                    <AccountRow key={index} account={account}/>
+                                ))
+                    }
+                    </tbody>
+                </table>
+                <tr className={classes.empty}/>
+                <tr className={classes.empty}/>
+                <Grid item>
+                    <Footer/>
+                </Grid>
+            </Paper>
+        );
+    }
 );
 
 export default AccountsTable;

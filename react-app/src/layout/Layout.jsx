@@ -1,6 +1,7 @@
 import React from 'react';
 import {Grid, makeStyles} from "@material-ui/core";
 import {observer} from "mobx-react";
+import { isMobile } from "react-device-detect";
 import { Sidebar } from "../components/sidebar";
 
 const useStyles = makeStyles((theme) => ({

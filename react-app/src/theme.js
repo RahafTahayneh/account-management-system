@@ -1,11 +1,11 @@
 const theme = {
     palette: {
         primary: {
-            main: '#233058',
+            main: 'rgb(74, 188, 147)',
             light: '#283142',
         },
         secondary: {
-            main: '#0b6cf1',
+            main: 'rgb(75, 75, 75)',
             light: '#b5dbff',
         },
         error: {
@@ -51,11 +51,14 @@ const theme = {
     overrides: {
         MuiButton: {
             root: {
-                padding: '0.8rem 1.6rem !important',
+                padding: '10px !important',
             },
             label: {
                 fontSize: '1.2rem',
                 textTransform: 'capitalize',
+            },
+            containedSecondary: {
+              backgroundColor: 'rgb(244, 179, 47)'
             },
             outlined: {
                 color: '#fff',
@@ -81,7 +84,7 @@ const theme = {
             root: {
                 padding: 0,
             },
-        }
+        },
     }
 
 };

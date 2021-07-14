@@ -49,7 +49,7 @@ const AnalyticsBox = observer(({
                             </Grid>
                         )
                 }
-                <Grid item container direction={'row'} alignItems={'center'} className={classes.text} spacing={2} justify={'flex-start'} item xs={12}>
+                <Grid item container direction={'row'} alignItems={'center'} wrap={'nowrap'} className={classes.text} spacing={2} justify={'flex-start'} item xs={12}>
                     <Grid item className={classes.circle} />
                     <Grid item>
                         {label}

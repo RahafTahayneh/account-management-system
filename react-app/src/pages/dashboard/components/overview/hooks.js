@@ -2,13 +2,13 @@ import * as am4core from "@amcharts/amcharts4/core";
 import React from 'react';
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
-import { Color } from '@amcharts/amcharts4/core';
-import {AccountsStore} from "../../../../store/account";
 import _ from 'lodash';
+import {AccountsStore} from "../../../../store/account";
+import {getColorByStatus} from "../../../../utils";
 
 export const useGraphData = () => {
     return React.useMemo(() => {
-        const counts =_.reduce(AccountsStore.accounts, (p, account) => {
+        const counts = _.reduce(AccountsStore.accounts, (p, account) => {
             const status = account.status;
             if (!p.hasOwnProperty(status)) {
                 p[status] = 0;
@@ -18,9 +18,10 @@ export const useGraphData = () => {
         }, {});
 
         const GroupedAccountStatus = Object.keys(counts).map(k => {
-            return {status: k, count: counts[k]}; });
+            return {status: k, count: counts[k], color: am4core.color(getColorByStatus(k))};
+        });
         return GroupedAccountStatus;
-        }, [AccountsStore.accounts, AccountsStore.loading]);
+    }, [AccountsStore.accounts, AccountsStore.loading]);
 }
 
 
@@ -31,24 +32,10 @@ export const useGraphRender = () => React.useCallback((container, data) => {
     chart.innerRadius = 0
 
     let pieSeries = chart.series.push(new am4charts.PieSeries());
-    const pending =  new Color({r:255, g: 132,b: 0 });
-    const approved = new Color({
-        r: 38,
-        g: 210,
-        b: 176,
-    })
-    const closed = new Color({ r: 251, g: 94, b: 80 })
-    const funded = new Color({ r: 66, g: 133, b: 244 })
-    const approvedArr = _.filter(data, field => field.status === 'approved')
-    const pendingArr = _.filter(data, field => field.status === 'pending')
-    const closedArr = _.filter(data, field => field.status === 'closed')
-    const fundedArr = _.filter(data, field => field.status === 'funded')
-    console.log(approvedArr, pendingArr, closedArr, fundedArr)
-    const colors = _.compact([!_.isEmpty(pendingArr) && pending, !_.isEmpty(approvedArr) && approved, !_.isEmpty(closedArr) && closed, !_.isEmpty(fundedArr) && funded])
-    pieSeries.colors.list =colors;
 
     pieSeries.dataFields.value = "count";
     pieSeries.dataFields.category = "status";
+    pieSeries.slices.template.propertyFields.fill = "color"
     pieSeries.labels.template.disabled = true;
     pieSeries.labels.template.text = '';
 

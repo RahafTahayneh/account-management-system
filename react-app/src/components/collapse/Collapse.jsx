@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     title: {
         fontWeight: 'bold',
         fontSize: 20,
-        color: theme.palette.primary.main
+        color: '#222'
     },
 }));
 
