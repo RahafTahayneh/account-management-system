@@ -53,7 +53,7 @@ To run the app locally, clone the repository, navigate to it's directory.
 ```bash
 - If it's not already on your Windows, install python3.6 and pip (pip should come with it) \* Note: Python 3.7.x is not yet supported.
   
-in reacr-app:
+in react-app folder:
   - run  `npm install`
   - run `npm run build`
   
